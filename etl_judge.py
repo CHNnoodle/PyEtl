@@ -41,10 +41,13 @@ def p_judge_run(indaynum):
         db_conn.close()
 
         print '总同步过程%d个' % out_all_num1.getvalue()
-        print '日同步有效存储过程共%d个' % out_day_valid_num2.getvalue()
-        print '日同步待执行存储过程共%d个' % out_day_done_num4.getvalue()
-        print '有效存储过程共%d个' % out_now_valid_num3.getvalue()
-        print '目前已执行完成存储过程%d个' % out_now_done_num5.getvalue()
+        print '日同步有效过程共%d个' % out_day_valid_num2.getvalue()
+        print '已执行日同步过程共%d个' % out_day_done_num4.getvalue()
+        print '实时有效过程共%d个' % out_now_valid_num3.getvalue()
+        print '已执行实时过程共%d个' % out_now_done_num5.getvalue()
+        out_all = out_all_num1.getvalue()
+        out_done_all = out_day_done_num4.getvalue() + out_now_done_num5.getvalue()
+        print '已执行完过程共%d个' % 
 
         synacctday = out_acctday_strs7.getvalue()
         procs_strs = out_procs_strs8.getvalue()
@@ -63,8 +66,8 @@ def p_judge_run(indaynum):
                 print '执行存储过程 %s' % procs_strs[index]
                 t.start()
 
-        out_all = out_all_num1.getvalue()
-        out_done_all = out_day_done_num4.getvalue() + out_now_done_num5.getvalue()
+        # out_all = out_all_num1.getvalue()
+        # out_done_all = out_day_done_num4.getvalue() + out_now_done_num5.getvalue()
 
         if out_all == out_done_all:
             inc = 600
