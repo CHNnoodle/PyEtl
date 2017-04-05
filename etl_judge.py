@@ -47,7 +47,7 @@ def p_judge_run(indaynum):
         print '已执行实时过程共%d个' % out_now_done_num5.getvalue()
         out_all = out_all_num1.getvalue()
         out_done_all = out_day_done_num4.getvalue() + out_now_done_num5.getvalue()
-        print '已执行完过程共%d个' % 
+        print '已执行完过程共%d个' % out_done_all
 
         synacctday = out_acctday_strs7.getvalue()
         procs_strs = out_procs_strs8.getvalue()
