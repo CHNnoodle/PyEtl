@@ -32,10 +32,10 @@ if str != '1':
     oscmd = 'ps -ef | grep python | grep etl_judge.py | grep -v grep'
     (res_status, res_output) = commands.getstatusoutput(oscmd)
     if res_output:
-        res_str = 'etl调度状态正常。'
+        res_str = 'etl调度状态正常。\n'
         print res_str
     else:
-        res_str = 'etl调度进程已停止，需要检查！'
+        res_str = 'etl调度进程已停止，需要检查！\n'
         print res_str
 
     # 第三方 SMTP 服务
