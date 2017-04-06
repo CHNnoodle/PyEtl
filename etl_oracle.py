@@ -1,11 +1,14 @@
 # coding:utf8
 
+import os
 import cx_Oracle 
 import etl_hdfs
+
 
 #获得oracle数据库连接
 def get_conn():
     try:
+        os.environ['NLS_LANG'] = 'AMERICAN_AMERICA.AL32UTF8'
         db_conn = cx_Oracle.connect('xijia','dba!@#','NJUST')
         cursor = db_conn.cursor ()
         cursor.execute ("select 5 from dual")  
