@@ -15,7 +15,7 @@ if __name__=='__main__':
         else :
                 print 'etl调度中断，重启调度程序'
                 os.chdir("/root/PyEtl/")
-                pycmd = 'nohup stdbuf -oL python etl_judge.py >>etl.log 2>>$(date +%Y%m%d-%H-%M).err &'
+                pycmd = 'nohup stdbuf -oL python etl_judge.py >>etl.log 2>>etl.err &'
                 osres = os.popen(pycmd)
                 (os_status,os_output) = commands.getstatusoutput(oscmd)
                 if os_output :
