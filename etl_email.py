@@ -3,24 +3,24 @@
 import smtplib
 from email.header import Header
 from email.mime.text import MIMEText
+import etl_oracle
+import etl_time
 import cx_Oracle
-import datetime
 import os
 import commands
 
-os.environ['NLS_LANG'] = 'AMERICAN_AMERICA.AL32UTF8'
+inacctday = etl_time.get_time(1)
 
-inacctdaytime = datetime.datetime.today() - datetime.timedelta(days=1)
-inacctday = inacctdaytime.strftime("%Y%m%d")
-
-procname = 'xijia.p_day_mail'
+procname = 'xijia.pkg_etl_model.p_day_execute_situation'
 str = '1'
 
 try:
-    db_conn = cx_Oracle.connect('xijia', 'dba!@#', '192.10.86.13:1521/orclrac')
+    db_conn = etl_oracle.get_conn()
     cursor = db_conn.cursor()
+    num1 = cursor.var(cx_Oracle.NUMBER)
+    num2 = cursor.var(cx_Oracle.NUMBER)
     str = cursor.var(cx_Oracle.STRING)
-    cursor.callproc(procname, [inacctday, str])
+    cursor.callproc(procname, [inacctday, num1, num2, str])
     print '数据库同步情况：'
     print str.getvalue()
     cursor.close()

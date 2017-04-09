@@ -21,5 +21,8 @@ def get_time(daynum,daytpye=1):
 
 if __name__=='__main__':
     print 'etl_time'
-    x = get_time(1,2)
+    x = get_time(1)
+    print x
+    y = get_time(1,2)
+    print y
 
