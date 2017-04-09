@@ -9,7 +9,7 @@ import etl_hdfs
 def get_conn():
     try:
         os.environ['NLS_LANG'] = 'AMERICAN_AMERICA.AL32UTF8'
-        db_conn = cx_Oracle.connect('xijia','dba!@#','NJUST')
+        db_conn = cx_Oracle.connect('xijia','dba!@#','192.10.86.13:1521/orclrac')
         cursor = db_conn.cursor ()
         cursor.execute ("select 5 from dual")  
         row = cursor.fetchone () 
