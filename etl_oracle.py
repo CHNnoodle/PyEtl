@@ -12,7 +12,7 @@ def get_conn():
     try:
         os.environ['NLS_LANG'] = 'AMERICAN_AMERICA.AL32UTF8'
         # NJUST 192.10.86.13:1521/orclrac
-        conn = cx_Oracle.connect('xijia', 'dba!@#', 'NJUST')
+        conn = cx_Oracle.connect('xijia', 'dba!@#', '192.10.86.13:1521/orclrac')
         cur = conn.cursor()
         cur.execute("select 5 from dual")
         row = cur.fetchone()
