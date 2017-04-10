@@ -4,6 +4,7 @@ import os
 import cx_Oracle
 import etl_hdfs
 import etl_time
+import etl_global
 
 
 # 获得oracle数据库连接
@@ -17,7 +18,6 @@ def get_conn():
         row = cur.fetchone()
         cur.close()
         if row:
-            print '获得数据库连接'
             return conn
 
     except Exception, e:
@@ -27,16 +27,11 @@ def get_conn():
 
 def p_judge_proc(indaynum=1):
     try:
-
-        global synacctday
-        global procs_strs
-        global type_nums
-        global method_nums
-        global strategy_nums
-        global out_flag
+        etl_global._init()
 
         inacctday = etl_time.get_time(indaynum)
         jud_conn = get_conn()
+        print '获得数据库连接'
         cur_jud = jud_conn.cursor()
 
         out_msg1 = cur_jud.var(cx_Oracle.STRING)
@@ -65,12 +60,12 @@ def p_judge_proc(indaynum=1):
         cur_jud.close()
         jud_conn.close()
 
-        synacctday = out_acctday3.getvalue()
-        procs_strs = out_procs4.getvalue()
-        type_nums = out_type5.getvalue()
-        method_nums = out_method6.getvalue()
-        strategy_nums = out_strategy7.getvalue()
-        out_flag = out_flag2.getvalue()
+        etl_global.set_value('synacctday', out_acctday3.getvalue())
+        etl_global.set_value('procs_strs', out_procs4.getvalue())
+        etl_global.set_value('type_nums', out_type5.getvalue())
+        etl_global.set_value('method_nums', out_method6.getvalue())
+        etl_global.set_value('strategy_nums', out_strategy7.getvalue())
+        etl_global.set_value('out_flag', out_flag2.getvalue())
 
         print out_msg1.getvalue()
 

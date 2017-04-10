@@ -5,28 +5,21 @@ import etl_time
 import time
 import threading
 import etl_oracle
+import etl_global
 
 
 def p_judge_run(indaynum):
     try:
-        global synacctday
-        global procs_strs
-        global type_nums
-        global method_nums
-        global strategy_nums
-        global out_flag
-
-        synacctday = []
-        procs_strs = []
-        type_nums = []
-        method_nums = []
-        strategy_nums = []
-        out_flag = []
-
-
         t = threading.Thread(target=etl_oracle.p_judge_proc, args=(indaynum,))
         t.start()
         t.join()
+
+        synacctday = etl_global.get_value('synacctday')
+        procs_strs = etl_global.get_value('procs_strs')
+        type_nums = etl_global.get_value('type_nums')
+        method_nums = etl_global.get_value('method_nums')
+        strategy_nums = etl_global.get_value('strategy_nums')
+        out_flag = etl_global.get_value('out_flag')
 
         print '判断是否有待执行存储过程'
         if procs_strs:
@@ -57,7 +50,7 @@ if __name__ == '__main__':
     if nowhour < 3:
         print '当前%s点' % nowhour
         print '未到调度时间，终止调度'
-    while (nowhour >= 0):
+    while (nowhour >= 3):
         p_judge_run(daynum)
         nowhour = int(etl_time.get_time(1, 2))
     print '终止调度'
