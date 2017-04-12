@@ -24,13 +24,16 @@ def put_hdfs(shcontext, filename, hdfs_path):
         print 'spool数据到本地'
         oscmd2 = 'sh ' + sh_path
         (res_status2, res_output2) = commands.getstatusoutput(oscmd2)
+        print '1'
         time.sleep(100)
 
         print '上传数据到hdfs'
         txt_hdfs_path = hdfs_path + filename + '.txt'
         client = hdfs.Client("http://192.10.86.31:50070",
                              root="/", timeout=100, session=False)
+        print '2'
         client.delete(hdfs_path, recursive=True)
+        print '3'
         client.upload(txt_hdfs_path, txt_local_path)
 
         #oscmd3 = 'rm -f ' + txt_local_path
