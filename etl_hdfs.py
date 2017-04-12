@@ -22,6 +22,7 @@ def put_hdfs(shcontext, filename, hdfs_path):
         oscmd1 = 'chmod +x ' + sh_path
         (res_status1, res_output1) = commands.getstatusoutput(oscmd1)
         print 'spool数据到本地'
+        print sh_path
         oscmd2 = 'sh ' + sh_path
         (res_status2, res_output2) = commands.getstatusoutput(oscmd2)
         print '1'
