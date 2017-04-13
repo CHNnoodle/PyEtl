@@ -4,6 +4,7 @@ import os
 import commands
 import hdfs
 import time
+import subprocess
 
 # shcontext spool文件的内容
 # filename 对应生成文件的前缀
@@ -21,14 +22,13 @@ def put_hdfs(shcontext, filename, hdfs_path):
         print '写入pool脚本'
         oscmd1 = 'chmod +x ' + sh_path
         (res_status1, res_output1) = commands.getstatusoutput(oscmd1)
-        print 'spool数据到本地'
         print sh_path
         oscmd2 = 'sh ' + sh_path
-        import subprocess
-        retcode = subprocess.check_call(oscmd2,shell=True)
-        # print retcode
-        # (res_status2, res_output2) = commands.getstatusoutput(oscmd2)
-        # print res_status2
+
+        output = subprocess.Popen(oscmd2, stdout=subprocess.PIPE, shell=True)
+        out, err = output.communicate()
+        if not err:
+            print 'spool数据成功'
 
         print '上传数据到hdfs'
         txt_hdfs_path = hdfs_path + filename + '.txt'
