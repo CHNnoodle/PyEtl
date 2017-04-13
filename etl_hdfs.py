@@ -24,8 +24,11 @@ def put_hdfs(shcontext, filename, hdfs_path):
         print 'spool数据到本地'
         print sh_path
         oscmd2 = 'sh ' + sh_path
-        (res_status2, res_output2) = commands.getstatusoutput(oscmd2)
-        print res_status2
+        import subprocess
+        retcode = subprocess.call(oscmd2,shell=True)
+        print retcode
+        # (res_status2, res_output2) = commands.getstatusoutput(oscmd2)
+        # print res_status2
 
         print '上传数据到hdfs'
         txt_hdfs_path = hdfs_path + filename + '.txt'
