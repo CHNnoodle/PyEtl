@@ -26,7 +26,7 @@ def put_hdfs(shcontext, filename, hdfs_path):
         oscmd2 = 'sh ' + sh_path
         import subprocess
         retcode = subprocess.check_call(oscmd2,shell=True)
-        print retcode
+        # print retcode
         # (res_status2, res_output2) = commands.getstatusoutput(oscmd2)
         # print res_status2
 
