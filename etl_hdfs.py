@@ -27,6 +27,8 @@ def put_hdfs(shcontext, filename, hdfs_path):
 
         output = subprocess.Popen(oscmd2, stdout=subprocess.PIPE, shell=True)
         out, err = output.communicate()
+        print out
+        print err
         if not err:
             print 'spool数据成功'
 
