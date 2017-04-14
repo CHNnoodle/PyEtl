@@ -37,7 +37,7 @@ def put_hdfs(shcontext, filename, hdfs_path):
         client.delete(hdfs_path, recursive=True)
         client.upload(txt_hdfs_path, txt_local_path)
 
-        oscmd3 = 'rm -f ' + txt_local_path
+        # oscmd3 = 'rm -f ' + txt_local_path
         print '删除本地文件'
         res3 = os.system(oscmd3)
         return 'success'
