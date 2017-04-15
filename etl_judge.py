@@ -293,14 +293,12 @@ if __name__ == '__main__':
             daynum = int(sys.argv[1])
 
         inacctday = get_time(daynum)
-        nowhour = 3
-        while (nowhour >= 3):
+
+        while True:
 
             main_control(dns, inacctday)
             nowhour = int(get_time(1, 2))
 
-        logger.info('当前%s点' % nowhour)
-        logger.info('未到调度时间，终止调度')
-
     except Exception, e:
         logger.error(e)
+        logger.info('异常，终止调度')
