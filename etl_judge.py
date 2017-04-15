@@ -218,9 +218,11 @@ def main_control(dns, inacctday):
                 logger.info('执行过程 %s' % procs_strs[index])
                 t.start()
 
-        if out_flag == 1:
+        nowhour = int(get_time(1, 2))
+
+        if out_flag == 1 or nowhour<3 :
             inc = 600
-            logger.info('当日过程已执行完成,主进程进入长等待,十分钟')
+            logger.info('当前时间小于3点或当日过程已执行完成,主进程进入长等待,十分钟')
             time.sleep(inc)
         else:
             inc = 30
@@ -297,7 +299,6 @@ if __name__ == '__main__':
         while True:
 
             main_control(dns, inacctday)
-            nowhour = int(get_time(1, 2))
 
     except Exception, e:
         logger.error(e)
