@@ -18,20 +18,25 @@ inacctday = indaytime.strftime("%Y%m%d")
 procname = 'xijia.pkg_etl_model.p_day_execute_situation'
 str = '1'
 
-with cx_Oracle.connect(dns) as db_conn:
-    try:
-        cursor = db_conn.cursor()
-        num1 = cursor.var(cx_Oracle.NUMBER)
-        num2 = cursor.var(cx_Oracle.NUMBER)
-        str = cursor.var(cx_Oracle.STRING)
-        cursor.callproc(procname, [inacctday, num1, num2, str])
-        print '数据库同步情况：'
-        print str.getvalue()
+try:
+    with cx_Oracle.connect(dns) as db_conn:
+        try:
+            cursor = db_conn.cursor()
+            num1 = cursor.var(cx_Oracle.NUMBER)
+            num2 = cursor.var(cx_Oracle.NUMBER)
+            str = cursor.var(cx_Oracle.STRING)
+            cursor.callproc(procname, [inacctday, num1, num2, str])
+            print '数据库同步情况：'
+            print str.getvalue()
+            orl_res = str.getvalue()
 
-    except Exception, e:
+        except Exception, e:
+            print e
+        finally:
+            cursor.close()
+except Exception, e:
         print e
-    finally:
-        cursor.close()
+        orl_res = '数据库连接异常，需要检查'
 
 
 if str != '1':
@@ -52,7 +57,7 @@ if str != '1':
     sender = 'wanggang_123@126.com'
     receivers = 'wanggang@xjgreat.com'  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
     cc = 'chensongqiao@xjgreat.com,1049484426@qq.com'
-    message_str = res_str + str.getvalue()
+    message_str = res_str + orl_res
 
     # 三个参数：第一个为文本内容，第二个 plain 设置文本格式，第三个 utf-8 设置编码
     message = MIMEText(message_str, 'plain', 'utf-8')
