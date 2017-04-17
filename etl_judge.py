@@ -297,7 +297,7 @@ if __name__ == '__main__':
         inacctday = get_time(daynum)
 
         while True:
-
+            inacctday = get_time(daynum)
             main_control(dns, inacctday)
 
     except Exception, e:
