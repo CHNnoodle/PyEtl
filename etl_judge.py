@@ -294,7 +294,7 @@ if __name__ == '__main__':
         else:
             daynum = int(sys.argv[1])
 
-        inacctday = get_time(daynum)
+        # inacctday = get_time(daynum)
 
         while True:
             inacctday = get_time(daynum)
