@@ -25,6 +25,7 @@ try:
             num1 = cursor.var(cx_Oracle.NUMBER)
             num2 = cursor.var(cx_Oracle.NUMBER)
             str = cursor.var(cx_Oracle.STRING)
+            print '查询数据库同步情况：'
             cursor.callproc(procname, [inacctday, num1, num2, str])
             print '数据库同步情况：'
             print str.getvalue()
