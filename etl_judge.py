@@ -125,8 +125,8 @@ def p_judge_proc(dns, inacctday):
                 set_value('method_nums', out_method6.getvalue())
                 set_value('strategy_nums', out_strategy7.getvalue())
                 set_value('out_flag', out_flag2.getvalue())
-
-                logger.info(out_msg1.getvalue())
+                for line in out_msg1.getvalue().splitlines():
+                    logger.info(line)
 
             except Exception, e:
                 logger.error(e)
