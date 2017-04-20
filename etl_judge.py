@@ -304,3 +304,5 @@ if __name__ == '__main__':
     except Exception, e:
         logger.error(e)
         logger.info('异常，终止调度')
+    except KeyboardInterrupt:
+        logger.info('KeyboardInterrupt')
