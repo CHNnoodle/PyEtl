@@ -19,6 +19,7 @@ def main_control(dns, inacctday):
 
         logging.info('检查URL日志文件')
         filenames = etl_ftp.get_filenames()
+        logging.info('获取ftp目录文件名称')
         res = 0
         if filenames:
             for infilename in filenames:
