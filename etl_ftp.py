@@ -69,7 +69,7 @@ def get_filenames(hostip='192.10.86.126', hostuser='root', psword='njust!@#', os
 
 def put_file(dns, filename, inacctday, syntype=3, hostip='192.10.86.126', hostuser='root', hostword='njust!@#'):
     try:
-        in_proc_num = p_insert_log(dns, filename, inacctday, syntype)
+        in_proc_num = etl_oracle.p_insert_log(dns, filename, inacctday, syntype)
         # 创建SSH对象
         ssh = paramiko.SSHClient()
         # 允许连接不在know_hosts文件中的主机
@@ -93,7 +93,7 @@ def put_file(dns, filename, inacctday, syntype=3, hostip='192.10.86.126', hostus
     finally:
         # 关闭连接
         ssh.close()
-        p_update_log(dns, in_proc_num, finish_flag, 0, retcode, retinfo)
+        etl_oracle.p_update_log(dns, in_proc_num, finish_flag, 0, retcode, retinfo)
         return res
 
 
