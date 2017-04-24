@@ -76,6 +76,7 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         (status, output) = commands.getstatusoutput('ls /data/ftp')
         for infilename in output:
+            print infilename
             put_hdfs(infilename)
         # raise Exception('没有入参')
     else:
