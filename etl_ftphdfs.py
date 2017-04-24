@@ -1,6 +1,7 @@
 # coding:utf8
 
 import sys
+import os
 import commands
 import logging
 import hdfs
