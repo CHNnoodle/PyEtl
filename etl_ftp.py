@@ -53,7 +53,7 @@ def put_hdfs(filename, hdfs_path='/user/hdfs/url/', local_path='/data/ftp/'):
         logger.info('开始上传数据到hdfs')
         client = hdfs.Client("http://192.10.86.31:50070",
                              root="/", timeout=100, session=False)
-        client.upload(hdfs_filepath, local_filepath)
+        client.upload(hdfs_filepath, local_filepath, overwrite=True)
         logger.info('upload数据完成')
         oscmd = 'mv ' + local_filepath + ' /data/url/'
         # oscmd = 'ls'
