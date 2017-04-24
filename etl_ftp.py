@@ -78,7 +78,7 @@ def put_file(dns, filename, inacctday, syntype=3, hostip='192.10.86.126', hostus
         ssh.connect(hostname=hostip, port=22,
                     username=hostuser, password=hostword)
         # 执行命令
-        oscmd = 'python /root/PyEtl/etl_ftp.py ' + filename
+        oscmd = 'python /root/PyEtl/etl_ftphdfs.py ' + filename
         stdin, stdout, stderr = ssh.exec_command(oscmd)
         retinfo = stderr.read()
         if retinfo:
