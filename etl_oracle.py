@@ -4,6 +4,7 @@ import os
 import cx_Oracle
 import logging
 import etl_global
+import etl_hdfs
 
 
 # 插入日志
@@ -112,7 +113,7 @@ def callsynproc(dns, procname, inacctday, syntype, synmethod, synstrategy):
 
                     if out_retcode.getvalue() == 'success':
                         logging.info('生成查询脚本成功')
-                        (rowcount, hdfs_retcode, hdfs_retinfo) = put_hdfs(dns, out_select_sql.getvalue(
+                        (rowcount, hdfs_retcode, hdfs_retinfo) = etl_hdfs.put_hdfs(dns, out_select_sql.getvalue(
                         ), out_file_name.getvalue(), out_hdfs_path.getvalue())
 
                         if hdfs_retcode == 'success':
