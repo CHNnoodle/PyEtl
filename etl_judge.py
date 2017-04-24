@@ -27,9 +27,9 @@ def main_control(dns, inacctday):
                     break
 
         if res == 0:
-        logging.info('上传URL日志文件完成')
+            logging.info('上传URL日志文件完成')
         else:
-        logging.info('上传URL日志文件失败')
+            logging.info('上传URL日志文件失败')
 
         logging.info('检查过程同步情况')
         t = threading.Thread(target=etl_oracle.p_judge_proc,
