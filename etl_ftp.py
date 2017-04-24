@@ -75,7 +75,7 @@ if __name__ == '__main__':
     logger = init_logger()
     if len(sys.argv) < 2:
         (status, output) = commands.getstatusoutput('ls /data/ftp')
-        for infilename in output:
+        for infilename in output.split():
             print infilename
             # put_hdfs(infilename)
         # raise Exception('没有入参')
