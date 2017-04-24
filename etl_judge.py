@@ -6,7 +6,7 @@ import os
 import time
 import logging
 import threading
-import get_time from etl_time
+import etl_time
 import etl_ftp
 import etl_global
 import etl_logger

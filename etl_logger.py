@@ -4,9 +4,6 @@ import logging
 import logging.handlers
 import os
 
-import etl_oracle
-import etl_global
-
 
 # 设置日志系统
 def init_logger(logpath='/root/PyEtl/'):

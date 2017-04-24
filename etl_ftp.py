@@ -6,8 +6,7 @@ import commands
 import logging
 import hdfs
 import paramiko
-import p_insert_log
-import p_update_log from etl_oracle
+import etl_oracle
 
 
 def init_logger(logpath='/root/PyEtl/'):
