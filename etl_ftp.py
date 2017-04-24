@@ -77,5 +77,6 @@ if __name__ == '__main__':
         raise Exception('没有入参')
     else:
         infilename = sys.argv[1]
-    # put_hdfs('3_url_20170315155330_00058.txt')
-    put_hdfs(infilename,'/user/hdfs/','/root/')
+
+    # put_hdfs(infilename,'/user/hdfs/','/root/')
+    put_hdfs(infilename)
