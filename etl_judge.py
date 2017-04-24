@@ -22,6 +22,7 @@ def main_control(dns, inacctday):
         res = 0
         if filenames:
             for infilename in filenames:
+                logging.info('上传%s' % infilename)
                 res = etl_ftp.put_file(dns, infilename, inacctday)
                 if res == 1:
                     break
