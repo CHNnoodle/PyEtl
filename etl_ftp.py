@@ -78,4 +78,4 @@ if __name__ == '__main__':
     else:
         infilename = sys.argv[1]
     # put_hdfs('3_url_20170315155330_00058.txt')
-    put_hdfs(infilename)
+    put_hdfs(infilename,'/user/hdfs/','/root/')
