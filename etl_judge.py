@@ -56,7 +56,7 @@ def main_control(dns, inacctday):
 
         if out_flag == 1:
             inc = 600
-            logging.info('当前时间小于3点或当日过程已执行完成,主进程进入长等待,十分钟')
+            logging.info('当日过程已执行完成,主进程进入长等待,十分钟')
             time.sleep(inc)
         else:
             inc = 60
