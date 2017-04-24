@@ -74,9 +74,11 @@ def put_hdfs(filename, hdfs_path='/user/hdfs/url/', local_path='/data/ftp/'):
 if __name__ == '__main__':
     logger = init_logger()
     if len(sys.argv) < 2:
-        raise Exception('没有入参')
+        (status, output) = commands.getstatusoutput('ls /data/ftp')
+        print output
+        # raise Exception('没有入参')
     else:
         infilename = sys.argv[1]
 
     # put_hdfs(infilename,'/user/hdfs/','/root/')
-    put_hdfs(infilename)
+    # put_hdfs(infilename)
