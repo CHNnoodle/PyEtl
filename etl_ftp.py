@@ -78,5 +78,5 @@ if __name__ == '__main__':
     else:
         infilename = sys.argv[1]
 
-    # put_hdfs(infilename,'/user/hdfs/','/root/')
-    put_hdfs(infilename)
+    put_hdfs(infilename,'/user/hdfs/','/root/')
+    # put_hdfs(infilename)
