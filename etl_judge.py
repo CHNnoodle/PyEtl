@@ -78,12 +78,12 @@ if __name__ == '__main__':
         else:
             daynum = int(sys.argv[1])
 
-        inacctday = get_time(daynum)
+        inacctday = etl_time.get_time(daynum)
 
         while (inacctday > 0):
 
             main_control(dns, inacctday)
-            inacctday = get_time(daynum)
+            inacctday = etl_time.get_time(daynum)
 
     except Exception, e:
         logger.error(e)
