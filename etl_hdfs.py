@@ -16,7 +16,7 @@ def put_hdfs(dns, sql, filename, hdfs_path, local_path='/root/spooldata/'):
                 cursor.execute(sql)
                 res = cursor.fetchall()
                 count = cursor.rowcount
-                logging.info('%s:OJDBC导出%s行数据' % filename % count)
+                logging.info('%s:OJDBC导出%s行数据' % (filename, count))
             except Exception, e:
                 logging.error(e)
                 raise Exception(e)
@@ -59,6 +59,7 @@ def put_hdfs(dns, sql, filename, hdfs_path, local_path='/root/spooldata/'):
 if __name__ == '__main__':
     sql = '''select ACCT_DAY||'|*|'||USERNAME||'|*|'||FULLNAME||'|*|'||
     CERTIFICATION_NO||'|*|'||MOBILE||'|*|'||STATUS||'|*|'||CREATETIME from STAGE_LOG.T_USERINFO WHERE ROWNUM<=10'''
-    (x, y) = put_hdfs(dns, sql, 'test', '1', '/Users/wanggang/Downloads/')
+    dns = r'xijia/dba#789@NJUST'
+    (x, y, z) = put_hdfs(dns, sql, 'test', '1', '/Users/wanggang/Downloads/')
     print x
     print y
