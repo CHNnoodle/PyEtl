@@ -142,7 +142,6 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         (status, output) = commands.getstatusoutput('ls /data/ftp')
         for infilename in output.split():
-            if os.path.isfile(path)
             print infilename
             put_hdfs(infilename)
     else:
