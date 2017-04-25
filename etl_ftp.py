@@ -106,6 +106,8 @@ def put_hdfs(filename, hdfs_path='/user/hdfs/url/', local_path='/data/ftp/'):
         acctday = filename[6:14] + '/'
         hdfs_filepath = hdfs_path + acctday + filename
         local_filepath = local_path + filename
+        if not os.path.isfile(local_filepath) or filename[-4:] == 'temp':
+            raise EOFError("file is not a txt file.")
         logging.info('本地文件：%s' % local_filepath)
         logging.info('HDFS文件：%s' % hdfs_filepath)
         logging.info('开始上传数据到hdfs')
@@ -113,7 +115,7 @@ def put_hdfs(filename, hdfs_path='/user/hdfs/url/', local_path='/data/ftp/'):
                              root="/", timeout=100, session=False)
         client.upload(hdfs_filepath, local_filepath, overwrite=True)
         logging.info('upload数据完成')
-        newpath = '/data/url/'+acctday
+        newpath = '/data/url/' + acctday
         try:
             os.chdir(newpath)
         except OSError:
@@ -129,6 +131,8 @@ def put_hdfs(filename, hdfs_path='/user/hdfs/url/', local_path='/data/ftp/'):
             (retcode, retinfo) = ('fail', 'mv file fail')
             logging.info(retcode + ' : ' + retinfo)
 
+    except EOFError, e:
+        logging.info(e)
     except Exception, e:
         logging.error(e)
         raise Exception(e)
@@ -138,6 +142,7 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         (status, output) = commands.getstatusoutput('ls /data/ftp')
         for infilename in output.split():
+            if os.path.isfile(path)
             print infilename
             put_hdfs(infilename)
     else:
