@@ -113,7 +113,12 @@ def put_hdfs(filename, hdfs_path='/user/hdfs/url/', local_path='/data/ftp/'):
                              root="/", timeout=100, session=False)
         client.upload(hdfs_filepath, local_filepath, overwrite=True)
         logging.info('upload数据完成')
-        oscmd = 'mv ' + local_filepath + ' /data/url/'
+        newpath = '/data/url/'+acctday
+        try:
+            os.chdir(newpath)
+        except OSError:
+            os.makedirs(newpath)
+        oscmd = 'mv ' + local_filepath + ' ' + newpath
         logging.info('转移本地文件')
         logging.info(oscmd)
         (status, output) = commands.getstatusoutput(oscmd)
