@@ -35,7 +35,8 @@ def put_hdfs(dns, sql, filename, hdfs_path, local_path='/root/spooldata/'):
             txt_hdfs_path = hdfs_path + filename
             client = hdfs.Client("http://192.10.86.31:50070",
                                  root="/", timeout=100, session=False)
-            client.delete(hdfs_path, recursive=True)
+            if filename[16:22]!='v_acct':
+                client.delete(hdfs_path, recursive=True)
             client.upload(txt_hdfs_path, filepath)
             logging.info('upload数据完成')
         except Exception, e:
