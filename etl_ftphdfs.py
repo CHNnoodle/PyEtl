@@ -5,7 +5,6 @@ import os
 import commands
 import logging
 import hdfs
-import paramiko
 
 
 def init_logger(logpath='/root/PyEtl/'):
