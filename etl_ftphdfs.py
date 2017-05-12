@@ -57,21 +57,21 @@ def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/ur
                              root="/", timeout=100, session=False)
         client.upload(hdfs_filepath, local_filepath, overwrite=True)
         logging.info('upload数据完成')
-        newpath = '/ftpdata/urlbak/' + acctday
-        try:
-            os.chdir(newpath)
-        except OSError:
-            os.makedirs(newpath)
-        oscmd = 'mv ' + local_filepath + ' ' + newpath
-        logging.info('转移本地文件')
-        logging.info(oscmd)
-        (status, output) = commands.getstatusoutput(oscmd)
-        if status == 0:
-            (retcode, retinfo) = ('success', '')
-            logging.info(retcode + retinfo)
-        else:
-            (retcode, retinfo) = ('fail', 'mv file fail')
-            logging.info(retcode + ' : ' + retinfo)
+        # newpath = '/ftpdata/urlbak/' + acctday
+        # try:
+        #     os.chdir(newpath)
+        # except OSError:
+        #     os.makedirs(newpath)
+        # oscmd = 'mv ' + local_filepath + ' ' + newpath
+        # logging.info('转移本地文件')
+        # logging.info(oscmd)
+        # (status, output) = commands.getstatusoutput(oscmd)
+        # if status == 0:
+        #     (retcode, retinfo) = ('success', '')
+        #     logging.info(retcode + retinfo)
+        # else:
+        #     (retcode, retinfo) = ('fail', 'mv file fail')
+        #     logging.info(retcode + ' : ' + retinfo)
 
     except EOFError, e:
         logging.info(e)
