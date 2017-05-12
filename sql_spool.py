@@ -37,6 +37,7 @@ def put_hdfs(dns, sql, filename,local_path='/root/spooldata/'):
 
 
 if __name__ == '__main__':
+    os.environ['NLS_LANG'] = 'AMERICAN_AMERICA.AL32UTF8'
     sql = '''select ACCT_MONTH || '|*|' || ACCT_DAY || '|*|' || ACCTSESSIONID || '|*|' ||
        USERNAME || '|*|' || AREA_TYPE || '|*|' ||
        to_char(ACCTSTARTTIME, 'yyyymmdd hh24:mi:ss') || '|*|' ||
