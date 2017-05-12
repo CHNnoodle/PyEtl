@@ -26,6 +26,8 @@ def put_hdfs(dns, sql, filename,local_path='/root/spooldata/'):
             for row_data in res:
                 f.write(''.join(row_data).encode('utf-8') + '\n')
             print '写入本地文件%s完成' % filepath
+        retcode='success'
+        retinfo =''
 
     except Exception, e:
         (retcode, retinfo) = ('fail', e)
