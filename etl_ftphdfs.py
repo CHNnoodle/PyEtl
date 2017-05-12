@@ -43,7 +43,7 @@ def init_logger(logpath='/root/PyEtl/'):
         raise Exception(e)
 
 
-def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/urlbak/'):
+def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/urllog/'):
     try:
         acctday = filename[6:14] + '/'
         hdfs_filepath = hdfs_path + acctday + filename
@@ -82,7 +82,7 @@ def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/ur
 if __name__ == '__main__':
     logger = init_logger()
     if len(sys.argv) < 2:
-        (status, output) = commands.getstatusoutput('ls /ftpdata/urlbak/')
+        (status, output) = commands.getstatusoutput('ls /ftpdata/urllog/')
         for infilename in output.split():
             print infilename
             put_hdfs(infilename)
