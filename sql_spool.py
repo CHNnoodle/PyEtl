@@ -49,6 +49,6 @@ if __name__ == '__main__':
        '|*|' || MAC || '|*|' || number2ip(nas_ip) || '|*|' || SVLAN || '|*|' || PVLAN
   from STAGE_LOG.t_ACCT where ACCT_DAY='20170510' '''
     dns = r'xijia/dba#789@NJUST'
-    (x, y, z) = put_hdfs(dns, sql, '20170510', '/Users/wanggang/Downloads/')
+    (x, y, z) = put_hdfs(dns, sql, '20170510', '/root')
     print x
     print y
