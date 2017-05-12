@@ -45,7 +45,7 @@ def init_logger(logpath='/root/PyEtl/'):
         raise Exception(e)
 
 
-def get_filenames(hostip='192.10.86.123', hostuser='root', psword='njust!@#', oscmd='ls /ftpdata/url/'):
+def get_filenames(hostip='192.10.86.123', hostuser='root', psword='njust!@#', oscmd='ls /ftpdata/urllog/'):
     try:
         # 创建SSH对象
         ssh = paramiko.SSHClient()
