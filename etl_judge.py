@@ -34,7 +34,7 @@ def main_control(dns, inacctday):
             logging.info('上传URL日志文件失败')
 
         logging.info('检查网站群日志文件')
-        filenames = etl_ftp.get_filenames(oscmd='ls /ftpdata/weblog/')
+        filenames = etl_ftp.get_filenames(oscmd='ls /ftpdata/weblog/*access*')
         logging.info('获取/ftpdata/weblog/目录文件名称')
         res = 0
         if filenames:

@@ -43,7 +43,7 @@ def init_logger(logpath='/root/PyEtl/'):
         raise Exception(e)
 
 
-def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/urllog/'):
+def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/urllog/',bakpath = '/ftpdata/urlbak/'):
     try:
         acctday = filename[6:14] + '/'
         hdfs_filepath = hdfs_path + acctday + filename
@@ -58,7 +58,7 @@ def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/ur
         client.delete(hdfs_filepath, recursive=True)
         client.upload(hdfs_filepath, local_filepath, overwrite=True)
         logging.info('upload数据完成')
-        newpath = '/ftpdata/urlbak/' + acctday
+        newpath = bakpath + acctday
         try:
             os.chdir(newpath)
         except OSError:
@@ -89,7 +89,7 @@ if __name__ == '__main__':
             put_hdfs(infilename)
     else:
         infilename = sys.argv[1]
-        if filename[-3:] == 'log':
+        if infilename[-3:] == 'log':
             put_hdfs(infilename,'/user/hdfs/web_logs/','/ftpdata/weblog/')
         else :
             put_hdfs(infilename)
