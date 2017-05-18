@@ -43,9 +43,13 @@ def init_logger(logpath='/root/PyEtl/'):
         raise Exception(e)
 
 
-def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/urllog/',bakpath = '/ftpdata/urlbak/'):
+def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/urllog/', bakpath='/ftpdata/urlbak/'):
     try:
-        acctday = filename[6:14] + '/'
+        if infilename[-3:] == 'log':
+            inacctday = filename[0:4] + filename[5:7] + filename[8:10]
+        else:
+            inacctday = filename[6:14]
+        acctday = inacctday + '/'
         hdfs_filepath = hdfs_path + acctday + filename
         local_filepath = local_path + filename
         if not os.path.isfile(local_filepath) or filename[-4:] == 'temp':
@@ -90,6 +94,7 @@ if __name__ == '__main__':
     else:
         infilename = sys.argv[1]
         if infilename[-3:] == 'log':
-            put_hdfs(infilename,'/user/hdfs/web_logs/','/ftpdata/weblog/','/ftpdata/webbak/')
-        else :
+            put_hdfs(infilename, '/user/hdfs/web_logs/',
+                     '/ftpdata/weblog/', '/ftpdata/webbak/')
+        else:
             put_hdfs(infilename)
