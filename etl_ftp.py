@@ -69,6 +69,8 @@ def get_filenames(hostip='192.10.86.103', hostuser='root', psword='njust!@#', os
 
 def put_file(dns, filename, syntype=3, hostip='192.10.86.123', hostuser='root', hostword='njust!@#'):
     try:
+        if infilename[-3:] == 'log':
+            inacctday = filename[6:14]
         inacctday = filename[6:14]
         in_proc_num = etl_oracle.p_insert_log(
             dns, filename, inacctday, syntype)
