@@ -69,7 +69,7 @@ def get_filenames(hostip='192.10.86.103', hostuser='root', psword='njust!@#', os
 
 def put_file(dns, filename, syntype=3, hostip='192.10.86.123', hostuser='root', hostword='njust!@#'):
     try:
-        if infilename[-3:] == 'log':
+        if filename[-3:] == 'log':
             inacctday = filename[0:4] + filename[5:7] + filename[8:10]
         else:
             inacctday = filename[6:14]
@@ -106,7 +106,7 @@ def put_file(dns, filename, syntype=3, hostip='192.10.86.123', hostuser='root', 
 
 def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/urllog/', bakpath='/ftpdata/urlbak/'):
     try:
-        if infilename[-3:] == 'log':
+        if filename[-3:] == 'log':
             inacctday = filename[0:4] + filename[5:7] + filename[8:10]
         else:
             inacctday = filename[6:14]

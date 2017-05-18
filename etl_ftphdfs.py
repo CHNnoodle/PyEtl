@@ -45,7 +45,7 @@ def init_logger(logpath='/root/PyEtl/'):
 
 def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/urllog/', bakpath='/ftpdata/urlbak/'):
     try:
-        if infilename[-3:] == 'log':
+        if filename[-3:] == 'log':
             inacctday = filename[0:4] + filename[5:7] + filename[8:10]
         else:
             inacctday = filename[6:14]
