@@ -106,13 +106,11 @@ def put_file(dns, filename, syntype=3, hostip='192.10.86.123', hostuser='root', 
 
 def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/urllog/', bakpath='/ftpdata/urlbak/'):
     try:
-        print infilename[-3:]
         if infilename[-3:] == 'log':
             inacctday = filename[0:4] + filename[5:7] + filename[8:10]
         else:
             inacctday = filename[6:14]
         acctday = inacctday + '/'
-        print acctday
         hdfs_filepath = hdfs_path + acctday + filename
         local_filepath = local_path + filename
         if not os.path.isfile(local_filepath) or filename[-4:] == 'temp':
