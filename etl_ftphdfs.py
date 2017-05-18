@@ -52,6 +52,7 @@ def put_hdfs(filename, hdfs_path='/user/hdfs/url_logs/', local_path='/ftpdata/ur
         acctday = inacctday + '/'
         hdfs_filepath = hdfs_path + acctday + filename
         local_filepath = local_path + filename
+        print os.path.isfile(local_filepath)
         if not os.path.isfile(local_filepath) or filename[-4:] == 'temp':
             raise EOFError("file is not a txt file.")
         logging.info('本地文件：%s' % local_filepath)

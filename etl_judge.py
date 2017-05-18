@@ -23,6 +23,7 @@ def main_control(dns, inacctday):
         res = 0
         if filenames:
             for infilename in filenames:
+                infilename = infilename.split("/")[-1]
                 logging.info('上传%s' % infilename)
                 res = etl_ftp.put_file(dns, infilename)
                 if res == 1:
@@ -39,6 +40,7 @@ def main_control(dns, inacctday):
         res = 0
         if filenames:
             for infilename in filenames:
+                infilename = infilename.split("/")[-1]
                 logging.info('上传%s' % infilename)
                 res = etl_ftp.put_file(dns, infilename)
                 if res == 1:
