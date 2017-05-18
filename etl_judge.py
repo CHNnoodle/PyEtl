@@ -33,6 +33,22 @@ def main_control(dns, inacctday):
         else:
             logging.info('上传URL日志文件失败')
 
+        logging.info('检查网站群日志文件')
+        filenames = etl_ftp.get_filenames(oscmd='ls /ftpdata/weblog/')
+        logging.info('获取/ftpdata/weblog/目录文件名称')
+        res = 0
+        if filenames:
+            for infilename in filenames:
+                logging.info('上传%s' % infilename)
+                res = etl_ftp.put_file(dns, infilename)
+                if res == 1:
+                    break
+
+        if res == 0:
+            logging.info('上传网站群日志文件完成')
+        else:
+            logging.info('上传网站群日志文件失败')
+
         logging.info('检查过程同步情况')
         t = threading.Thread(target=etl_oracle.p_judge_proc,
                              args=(dns, inacctday,))

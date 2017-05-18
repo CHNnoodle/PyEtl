@@ -89,4 +89,7 @@ if __name__ == '__main__':
             put_hdfs(infilename)
     else:
         infilename = sys.argv[1]
-        put_hdfs(infilename)
+        if filename[-3:] == 'log':
+            put_hdfs(infilename,'/user/hdfs/web_logs/','/ftpdata/weblog/')
+        else :
+            put_hdfs(infilename)
