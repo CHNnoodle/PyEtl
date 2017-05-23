@@ -9,6 +9,7 @@ import hdfs
 
 def put_hdfs(dns, sql, filename, hdfs_path, local_path='/root/spooldata/'):
     try:
+        sys.setdefaultencoding('utf-8')
         count = ''
         with cx_Oracle.connect(dns) as conn:
             try:
