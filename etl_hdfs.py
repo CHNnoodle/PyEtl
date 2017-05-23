@@ -5,6 +5,7 @@ import os
 import logging
 import cx_Oracle
 import hdfs
+import sys
 
 
 def put_hdfs(dns, sql, filename, hdfs_path, local_path='/root/spooldata/'):
