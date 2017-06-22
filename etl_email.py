@@ -57,7 +57,7 @@ if str != '1':
 
     sender = 'wanggang_123@126.com'
     receivers = 'wangxin@xjgreat.com'  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
-    cc = 'chensongqiao@xjgreat.com'
+    cc = 'keshangsong@xjgreat.com'
     message_str = res_str + orl_res
 
     # 三个参数：第一个为文本内容，第二个 plain 设置文本格式，第三个 utf-8 设置编码
