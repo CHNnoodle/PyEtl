@@ -31,6 +31,10 @@ def getdns(section):
 
 # 设置日志系统
 def init_logger(d_info):
+
+
+
+
     try:
         # 创建logger
         # 创建handler
