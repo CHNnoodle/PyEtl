@@ -16,6 +16,11 @@ def getdns(section):
             p = config.get(section, 'passwd')
             dns = s % urlquote(p)
             return dns
+
+
+
+
+
         except Exception, ept:
             raise Exception(ept)
     except Exception, ept:
